@@ -4,7 +4,7 @@ The repository contains implementation of Data Structures and Algorithms in [Dar
 ### Get started
 Clone or download the repository and open it on your favorite IDE (Recommended IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea/download/))
 ### Overview
-- [Data Structures]()
+- [Data Structures](https://github.com/hieu-dd/data-structures-algorithms/tree/master/bin/datastructures/)
     - Arrays
     - Hash Tables
     - Linked Lists
@@ -12,7 +12,7 @@ Clone or download the repository and open it on your favorite IDE (Recommended I
     - Queues
     - Trees
     - Graphs
-- [Algorithms]()
+- [Algorithms](https://github.com/hieu-dd/data-structures-algorithms/tree/master/bin/algorithms/)
     - Recursion
     - Sorting
         - Bubble Sort

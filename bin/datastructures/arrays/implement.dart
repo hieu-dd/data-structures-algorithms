@@ -1,5 +1,5 @@
 class MyArray<T> {
-  var length = 0;
+  int length = 0;
   Map<int, T> data = {};
 
   T get(index) {
@@ -30,21 +30,30 @@ class MyArray<T> {
       data[i] = data[i + 1]!;
     }
     data.remove(length - 1);
+    length--;
     return item;
+  }
+
+  void reverse() {
+    for (int i = 0; i < length / 2; i++) {
+      final temp = data[i];
+      data[i] = data[length - 1 - i]!;
+      data[length - 1 - i] = temp!;
+    }
   }
 
   @override
   String toString() {
     var result = "[";
     data.forEach((key, value) {
-      result+="{${key}:${value}},";
+      result += "{${key}:${value}},";
     });
-    result+="]";
+    result += "]";
     return result;
   }
 }
 
-void main(){
+void main() {
   final newArray = MyArray<int>();
   newArray.push(1);
   newArray.push(2);
@@ -53,6 +62,9 @@ void main(){
   newArray.push(5);
   newArray.push(6);
   newArray.pop();
-  newArray.delete(2);
+  // newArray.delete(2);
+  print(newArray.toString());
+
+  newArray.reverse();
   print(newArray.toString());
 }
