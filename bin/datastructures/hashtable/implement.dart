@@ -20,18 +20,29 @@ class MyHashTable {
     if (_data[address] == null) {
       _data[address] = [];
     }
-    _data[address]!.add(KeyValue(key, value));
+    _data[address]!.add(KeyValue(key.toString(), value));
   }
 
   dynamic get(key) {
     final address = _hash(key);
     final bucket = _data[address];
-    return bucket?.firstWhere((element) => element.key == key).value;
+    try {
+      return bucket?.firstWhere((element) => element.hasKey(key)).value;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  List<dynamic> keys() {
+    return _data
+        .toList()
+        .expand(
+            (element) => ((element ?? <KeyValue>[]).map((e) => e.key).toList()))
+        .toList();
   }
 
   @override
   String toString() {
-
     return _data.toString();
   }
 }
@@ -41,6 +52,9 @@ class KeyValue {
   final dynamic value;
 
   KeyValue(this.key, this.value);
+
+  bool hasKey(dynamic key) => this.key == key.toString();
+
   @override
   String toString() {
     return "{key:$key,value:$value}";
@@ -55,4 +69,6 @@ void main() {
   myHash.set("key4", "b");
   print(myHash.toString());
   print(myHash.get("key1"));
+  print(myHash.get("key5"));
+  print(myHash.keys());
 }
