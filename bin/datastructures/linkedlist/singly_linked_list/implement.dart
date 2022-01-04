@@ -13,52 +13,54 @@ class Node<E> {
 class MyLinkedList<E> {
   Node? head;
   Node? tail;
-  var lenght = 0;
+  var length = 0;
 
   MyLinkedList(E value) {
     head = Node(value, null);
     tail = head;
-    lenght = 1;
+    length = 1;
   }
 
   Node append(value) {
     final newNode = Node(value, null);
     tail!.next = newNode;
     tail = newNode;
-    lenght++;
+    length++;
     return head!;
   }
 
-  @override
-  String toString() {
-    return head.toString();
+  Node appendAll(List<E> values) {
+    values.forEach((element) {
+      append(element);
+    });
+    return head!;
   }
 
   Node prepend(value) {
     final newNode = Node(value, head);
     head = newNode;
-    lenght++;
+    length++;
     return head!;
   }
 
   Node insert(index, value) {
-    if (index > lenght) {
+    if (index > length) {
       throw Exception("Out of index");
     } else if (index == 0) {
       prepend(value);
-    } else if (index == lenght) {
+    } else if (index == length) {
       append(value);
     } else {
       final leadNode = traverseToIndex(index - 1);
       final newNode = Node(value, leadNode!.next);
       leadNode.next = newNode;
     }
-    lenght++;
+    length++;
     return head!;
   }
 
   Node? remove(index) {
-    if (index >= lenght) {
+    if (index >= length) {
       throw Exception("Out of index");
     } else if (index == 0) {
       head = head!.next;
@@ -68,7 +70,7 @@ class MyLinkedList<E> {
       leadNode.next = removeNode!.next;
       removeNode.next = null;
     }
-    lenght--;
+    length--;
     return head;
   }
 
@@ -80,6 +82,28 @@ class MyLinkedList<E> {
       count++;
     }
     return temp;
+  }
+
+  Node? reverse() {
+    if (length == 1) {
+      return head;
+    }
+    var first = head;
+    var second = first!.next;
+    while (second != null) {
+      var temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    head!.next = null;
+    head = first;
+    return head;
+  }
+
+  @override
+  String toString() {
+    return head.toString();
   }
 }
 
