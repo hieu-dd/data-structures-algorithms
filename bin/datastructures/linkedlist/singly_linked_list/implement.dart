@@ -51,7 +51,7 @@ class MyLinkedList<E> {
     } else if (index == length) {
       append(value);
     } else {
-      final leadNode = traverseToIndex(index - 1);
+      final leadNode = get(index - 1);
       final newNode = Node(value, leadNode!.next);
       leadNode.next = newNode;
     }
@@ -65,7 +65,7 @@ class MyLinkedList<E> {
     } else if (index == 0) {
       head = head!.next;
     } else {
-      final leadNode = traverseToIndex(index - 1);
+      final leadNode = get(index - 1);
       final removeNode = leadNode!.next;
       leadNode.next = removeNode!.next;
       removeNode.next = null;
@@ -74,7 +74,7 @@ class MyLinkedList<E> {
     return head;
   }
 
-  Node? traverseToIndex(int index) {
+  Node? get(int index) {
     var count = 0;
     var temp = head;
     while (count != index) {
