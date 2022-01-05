@@ -15,7 +15,9 @@ class MyLinkedList<E> {
   Node? tail;
   var length = 0;
 
-  MyLinkedList(E value) {
+  MyLinkedList();
+
+  MyLinkedList.MyLinkedListWithValue(E value) {
     head = Node(value, null);
     tail = head;
     length = 1;
@@ -23,7 +25,11 @@ class MyLinkedList<E> {
 
   Node append(value) {
     final newNode = Node(value, null);
-    tail!.next = newNode;
+    if(length ==0){
+      head = newNode;
+    } else {
+      tail!.next = newNode;
+    }
     tail = newNode;
     length++;
     return head!;
@@ -108,7 +114,7 @@ class MyLinkedList<E> {
 }
 
 void main() {
-  final myLinkedList = MyLinkedList(1);
+  final myLinkedList = MyLinkedList();
   myLinkedList.append(2);
   myLinkedList.append(2);
   myLinkedList.prepend(4);
