@@ -1,10 +1,8 @@
 class Graph {
-  int numberOfNodes = 0;
   Map<int, List<int>> adjacentList = {};
 
   void addVertex(int node) {
-    adjacentList[node] = [];
-    numberOfNodes++;
+    adjacentList.putIfAbsent(node, () => []);
   }
 
   void addEdge(int node1, int node2) {
@@ -12,4 +10,15 @@ class Graph {
     adjacentList[node1]?.add(node2);
     adjacentList[node2]?.add(node1);
   }
+}
+
+void main() {
+  // Adjacent Matrix
+  const graph = [
+    [0, 1, 0, 0, 1],
+    [1, 0, 1, 1, 1],
+    [0, 1, 0, 1, 0],
+    [0, 1, 1, 0, 1],
+    [1, 1, 0, 1, 0]
+  ];
 }
