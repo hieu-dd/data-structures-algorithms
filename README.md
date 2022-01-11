@@ -12,8 +12,8 @@ Clone or download the repository and open it on your favorite IDE (Recommended I
     - Queues
     - Trees
     - Graphs
+- [Recursion](https://github.com/hieu-dd/data-structures-algorithms/tree/master/bin/recursion/)
 - [Algorithms](https://github.com/hieu-dd/data-structures-algorithms/tree/master/bin/algorithms/)
-    - Recursion
     - Sorting
         - Bubble Sort
         - Selection Sort
